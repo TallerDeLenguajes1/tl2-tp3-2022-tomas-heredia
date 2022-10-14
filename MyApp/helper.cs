@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using MyApp;
 
 
 namespace LectorCSV
@@ -29,18 +30,36 @@ namespace LectorCSV
             
             
         } */
-        public List<string[]> LeerCsv( string nombreDeArchivo)
+        public List<Cliente> LeerCsvCliente( string nombreDeArchivo)
         {
             FileStream MiArchivo = new FileStream(nombreDeArchivo, FileMode.Open);
             StreamReader StrReader = new StreamReader(MiArchivo);
 
             string Linea = "";
-            List<string[]> LecturaDelArchivo = new List<string[]>();
+            List<Cliente> LecturaDelArchivo = new List<Cliente>();
 
             while ((Linea = StrReader.ReadLine()) != null)
             {
                 string[] Fila = Linea.Split(',');
-                LecturaDelArchivo.Add(Fila);
+                Cliente nuevo= new Cliente(Convert.ToInt32(Fila[0]),Fila[1],Fila[2],Convert.ToInt32(Fila[3]),Fila[4]);
+                LecturaDelArchivo.Add(nuevo);
+            }
+
+            return LecturaDelArchivo;
+        }
+        public List<Cadete> LeerCsvCadete( string nombreDeArchivo)
+        {
+            FileStream MiArchivo = new FileStream(nombreDeArchivo, FileMode.Open);
+            StreamReader StrReader = new StreamReader(MiArchivo);
+
+            string Linea = "";
+            List<Cadete> LecturaDelArchivo = new List<Cadete>();
+
+            while ((Linea = StrReader.ReadLine()) != null)
+            {
+                string[] Fila = Linea.Split(',');
+                Cadete nuevo= new Cadete(Convert.ToInt32(Fila[0]),Fila[1],Fila[2],Convert.ToInt32(Fila[3]));
+                LecturaDelArchivo.Add(nuevo);
             }
 
             return LecturaDelArchivo;

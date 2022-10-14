@@ -13,6 +13,9 @@ namespace MyApp
         public Cadete(int i, string n, string des, int t, List<Pedido> p):base( i,  n,  des,  t){
             pedidos = p;
         }
+        public Cadete(int i, string n, string des, int t):base( i,  n,  des,  t){
+            
+        }
         
         public float JornalACobrar(){
             int total =0;

@@ -9,12 +9,13 @@ namespace MyApp
     {
         public string Nombre{get; set;}
         public float Telefono{get; set;}
-
-        public Cadeteria(string n, float t){
+    public List<Cadete> Cadetes = new List<Cadete>();
+        public Cadeteria(string n, float t,List<Cadete> c){
             Nombre = n;
             Telefono = t;
+            Cadetes = c;
         }
 
-        public List<Cadete> Cadetes = new List<Cadete>();
+        
     }
 }

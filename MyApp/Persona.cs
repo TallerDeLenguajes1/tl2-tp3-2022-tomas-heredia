@@ -17,6 +17,7 @@ namespace MyApp
             descripcion = des;
             telefono = t;
         }
+        public Persona(){}
 
         
     }

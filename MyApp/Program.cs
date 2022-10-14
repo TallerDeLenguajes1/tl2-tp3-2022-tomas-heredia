@@ -5,6 +5,9 @@ using System.IO;  // para archivos csv
 using LectorCSV;
 using MyApp;
 using NLog;
+
+NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger(); //para nloh
+
 String DirCadetes = "Cadetes.csv";
 string DirClientes = "Clientes.csv";
 HelperCsv archivo = new HelperCsv();
@@ -41,9 +44,9 @@ while (aux == 0)
                 Console.WriteLine("Ingresar otro pedido? 0_NO 1_ SI");
                 aux = Convert.ToInt32(Console.ReadLine());
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
-                
+                logger.Error(e.ToString());
                 Console.WriteLine("datos incorrectos");
         }
 
@@ -78,8 +81,9 @@ foreach (Pedido pedido in Pedidos)
                                 
                         }
                 }
-                catch (System.Exception)
+                catch (System.Exception e)
                 {
+                        logger.Error(e.ToString());
                         Console.WriteLine("datos incorrectos");
                         throw;
                 }
